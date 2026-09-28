@@ -1,5 +1,7 @@
 # Dental Clinic Sample Website
 
+**Live:** https://darwindhas1.github.io/dental-clinic-sample/
+
 A finished, demo-ready website for a Malaysian dental clinic. Plain HTML, CSS and
 vanilla JS — no framework, no build step. Drop the folder on any static host.
 
@@ -33,7 +35,8 @@ These are static in the HTML and need a find-and-replace when you rebrand:
 
 1. The `<title>` and `<meta name="description">` on each of the nine pages.
 2. The `Dentist` JSON-LD block at the top of `index.html`.
-3. The domain in `sitemap.xml` and `robots.txt`.
+3. The domain in `sitemap.xml` and `robots.txt` — these currently point at the
+   GitHub Pages URL below and must be changed if you move the site.
 
 The header and footer markup is duplicated in each page (deliberately — no build
 step), so if you restructure the nav, change it in all nine files.
