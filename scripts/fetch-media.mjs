@@ -144,6 +144,14 @@ async function writePhoto(buf, name, w, h) {
     .resize(w, h, { fit: 'cover', position: 'attention' })
     .webp({ quality: 80 })
     .toFile(path.join(OUT, `${name}.webp`));
+
+  // Half-scale companion for srcset. Avatars are already tiny.
+  if (!name.startsWith('avatar')) {
+    await sharp(buf)
+      .resize(Math.round(w * 0.56), Math.round(h * 0.56), { fit: 'cover', position: 'attention' })
+      .webp({ quality: 74 })
+      .toFile(path.join(OUT, `${name}-sm.webp`));
+  }
 }
 
 /**
