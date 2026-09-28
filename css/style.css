@@ -528,10 +528,11 @@ body.menu-open { overflow: hidden; }
   background: var(--card-pink);
   color: var(--navy);
 }
-.info-card h3 {
+.info-card__title {
+  margin: 0 0 2px;
   font-size: 0.95rem;
   font-weight: 600;
-  margin-bottom: 2px;
+  color: var(--navy);
 }
 .info-card p,
 .info-card a {
@@ -1004,7 +1005,8 @@ body.menu-open { overflow: hidden; }
   background: var(--white);
   box-shadow: var(--shadow-md);
 }
-.form-card h3 { font-size: 1.35rem; margin-bottom: 6px; }
+.form-card h3,
+.form-card h2 { font-size: 1.35rem; margin-bottom: 6px; }
 .form-card > p { font-size: 0.95rem; margin-bottom: 22px; }
 
 .field { margin-bottom: 16px; }
@@ -1296,7 +1298,8 @@ body.menu-open { overflow: hidden; }
   background: var(--tint, var(--card-pink));
   color: var(--navy);
 }
-.contact-card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+.contact-card h3,
+.contact-card h2 { font-size: 1.05rem; margin-bottom: 6px; }
 .contact-card p, .contact-card a { font-size: 0.97rem; margin: 0; }
 .contact-card a { display: inline-flex; align-items: center; min-height: 44px; }
 .contact-card a:hover { color: var(--navy); text-decoration: underline; }
@@ -1314,7 +1317,8 @@ body.menu-open { overflow: hidden; }
   background: var(--white);
   box-shadow: var(--shadow-sm);
 }
-.aside-card h3 { font-size: 1.15rem; margin-bottom: 14px; }
+.aside-card h3,
+.aside-card h2 { font-size: 1.15rem; margin-bottom: 14px; }
 .aside-card dl { margin: 0 0 22px; font-size: 0.97rem; }
 .aside-card dt { font-weight: 500; color: var(--navy); margin-top: 12px; }
 .aside-card dt:first-child { margin-top: 0; }

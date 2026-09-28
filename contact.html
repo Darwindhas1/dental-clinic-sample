@@ -14,7 +14,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Onest:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Onest:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Onest:wght@400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="css/style.css">
 <script>document.documentElement.classList.add('js-anim');</script>
@@ -73,22 +75,22 @@
       <div class="contact-grid" data-reveal-group>
         <div class="contact-card" data-reveal="item" style="--tint:var(--card-pink)">
           <span class="contact-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h3.5l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5L15 13l4 1.5V18a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 4 7.2 2 2 0 0 1 5 4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
-          <h3>Phone</h3>
+          <h2 class="h4">Phone</h2>
           <p><a href="tel:+6050000000" data-cfg-href="tel:PHONE_LINK"><span data-cfg="PHONE_DISPLAY">+60 5-000 0000</span></a></p>
         </div>
         <div class="contact-card" data-reveal="item" style="--tint:var(--card-mint)">
           <span class="contact-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="m4 8 8 5 8-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-          <h3>Email</h3>
+          <h2 class="h4">Email</h2>
           <p><a href="mailto:hello@senyumdental.my" data-cfg-href="mail:EMAIL"><span data-cfg="EMAIL">hello@senyumdental.my</span></a></p>
         </div>
         <div class="contact-card" data-reveal="item" style="--tint:var(--card-peach)">
           <span class="contact-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg></span>
-          <h3>Address</h3>
+          <h2 class="h4">Address</h2>
           <p data-cfg="ADDRESS">12, Jalan Sultan Idris Shah, 30000 Ipoh, Perak</p>
         </div>
         <div class="contact-card" data-reveal="item" style="--tint:var(--card-blue)">
           <span class="contact-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-          <h3>Opening hours</h3>
+          <h2 class="h4">Opening hours</h2>
           <p data-cfg="HOURS">Mon to Sat 9:00am to 9:00pm &middot; Sun &amp; Public Holidays closed</p>
         </div>
       </div>
@@ -98,7 +100,7 @@
   <section class="section" style="padding-top:0">
     <div class="container plan" style="align-items:start">
       <form class="form-card" data-demo-form data-success="Thank you &mdash; your message is with us. We will reply shortly." novalidate data-reveal="up">
-        <h3>Send us a message</h3>
+        <h2 class="h4">Send us a message</h2>
         <p class="muted">We reply to everything, usually within one working hour.</p>
         <div class="field">
           <label for="ct-name">Name</label>
@@ -129,7 +131,7 @@
       <div data-reveal="up">
         <div id="map" role="img" aria-label="Map showing the clinic location in Ipoh"></div>
         <div class="aside-card" style="margin-top:20px">
-          <h3>Finding us</h3>
+          <h2 class="h4">Finding us</h2>
           <p class="muted">We are a five minute walk from Ipoh Padang, with street parking along Jalan Sultan Idris Shah and a public car park behind the row of shophouses.</p>
         </div>
       </div>

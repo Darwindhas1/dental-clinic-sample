@@ -14,7 +14,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Onest:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Onest:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Onest:wght@400;500;600&display=swap"></noscript>
+<link rel="preload" as="image" href="assets/img/hero-smile.webp" fetchpriority="high">
 <link rel="stylesheet" href="css/style.css">
 <script>document.documentElement.classList.add('js-anim');</script>
 <script type="application/ld+json">
@@ -107,14 +110,14 @@
           <div class="info-card" data-reveal="item">
             <span class="info-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="1.8"/><path d="M12 9.5V13l2.5 1.5M9 2h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
             <div>
-              <h3>Opening Hours</h3>
+              <p class="info-card__title">Opening Hours</p>
               <p data-cfg="HOURS_SHORT">Mon to Sat, 9:00am to 9:00pm</p>
             </div>
           </div>
           <div class="info-card" data-reveal="item">
             <span class="info-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h3.5l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5L15 13l4 1.5V18a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 4 7.2 2 2 0 0 1 5 4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
             <div>
-              <h3>Need Dental Help?</h3>
+              <p class="info-card__title">Need Dental Help?</p>
               <a href="tel:+6050000000" data-cfg-href="tel:PHONE_LINK"><span data-cfg="PHONE_DISPLAY">+60 5-000 0000</span></a>
             </div>
           </div>
@@ -122,7 +125,7 @@
       </div>
 
       <div class="hero__media" data-reveal="up">
-        <img src="assets/img/hero-smile.webp" width="1100" height="1400" alt="A woman resting her hand on her chin and smiling confidently">
+        <img src="assets/img/hero-smile.webp" width="1100" height="1400" fetchpriority="high" decoding="async" alt="A woman resting her hand on her chin and smiling confidently">
       </div>
     </div>
   </section>
@@ -367,7 +370,7 @@
               <img src="assets/img/avatar-4.webp" width="160" height="160" loading="lazy" alt="">
               <div><strong>Nurul A.</strong><span>Patient since 2023</span></div>
             </div>
-            <div class="stars" aria-label="5 out of 5 stars">
+            <div class="stars" role="img" aria-label="5 out of 5 stars">
               <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 4 .9 5.6L10 14.3 5 17l1-5.6-4-4 5.6-.8L10 1.5Z"/></svg>
               <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 4 .9 5.6L10 14.3 5 17l1-5.6-4-4 5.6-.8L10 1.5Z"/></svg>
               <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 4 .9 5.6L10 14.3 5 17l1-5.6-4-4 5.6-.8L10 1.5Z"/></svg>
@@ -382,7 +385,7 @@
               <img src="assets/img/avatar-5.webp" width="160" height="160" loading="lazy" alt="">
               <div><strong>Wei Sheng T.</strong><span>Patient since 2022</span></div>
             </div>
-            <div class="stars" aria-label="5 out of 5 stars">
+            <div class="stars" role="img" aria-label="5 out of 5 stars">
               <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 4 .9 5.6L10 14.3 5 17l1-5.6-4-4 5.6-.8L10 1.5Z"/></svg>
               <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 4 .9 5.6L10 14.3 5 17l1-5.6-4-4 5.6-.8L10 1.5Z"/></svg>
               <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 4 .9 5.6L10 14.3 5 17l1-5.6-4-4 5.6-.8L10 1.5Z"/></svg>
@@ -397,7 +400,7 @@
               <img src="assets/img/avatar-2.webp" width="160" height="160" loading="lazy" alt="">
               <div><strong>Sharmila R.</strong><span>Patient since 2024</span></div>
             </div>
-            <div class="stars" aria-label="5 out of 5 stars">
+            <div class="stars" role="img" aria-label="5 out of 5 stars">
               <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 4 .9 5.6L10 14.3 5 17l1-5.6-4-4 5.6-.8L10 1.5Z"/></svg>
               <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 4 .9 5.6L10 14.3 5 17l1-5.6-4-4 5.6-.8L10 1.5Z"/></svg>
               <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 4 .9 5.6L10 14.3 5 17l1-5.6-4-4 5.6-.8L10 1.5Z"/></svg>
@@ -490,7 +493,7 @@
             <p class="post-card__meta"><span class="tag">Dental Health</span> 5 min read</p>
             <h3><a href="blog-post.html">Feeling Nervous About the Dentist? 5 Ways to Relax</a></h3>
             <p>Practical things you can do before and during your visit to take the edge off.</p>
-            <a class="link-arrow" href="blog-post.html">Read More <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="link-arrow" href="blog-post.html">Read More<span class="visually-hidden">: Feeling Nervous About the Dentist? 5 Ways to Relax</span> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </article>
 
@@ -500,7 +503,7 @@
             <p class="post-card__meta"><span class="tag">Oral Health</span> 4 min read</p>
             <h3><a href="blog-post.html">7 Daily Habits for Healthier Teeth</a></h3>
             <p>Small routines that protect your enamel and gums far more than you would expect.</p>
-            <a class="link-arrow" href="blog-post.html">Read More <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="link-arrow" href="blog-post.html">Read More<span class="visually-hidden">: 7 Daily Habits for Healthier Teeth</span> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </article>
 
@@ -510,7 +513,7 @@
             <p class="post-card__meta"><span class="tag">Orthodontics</span> 6 min read</p>
             <h3><a href="blog-post.html">Braces vs Clear Aligners: Which Is Right for You?</a></h3>
             <p>An honest comparison of cost, comfort, treatment time and everyday hassle.</p>
-            <a class="link-arrow" href="blog-post.html">Read More <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="link-arrow" href="blog-post.html">Read More<span class="visually-hidden">: Braces vs Clear Aligners: Which Is Right for You?</span> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </article>
       </div>
