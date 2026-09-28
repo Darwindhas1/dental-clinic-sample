@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="220" height="220" role="img" aria-label="Illustration of a tooth beside a dental mirror">
+  <defs>
+    <linearGradient id="ck-tooth" x1="0.2" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.55" stop-color="#F4F6FD"/>
+      <stop offset="1" stop-color="#DDE2F2"/>
+    </linearGradient>
+    <linearGradient id="ck-mirror" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7FE9C2"/>
+      <stop offset="1" stop-color="#2FC39A"/>
+    </linearGradient>
+    <linearGradient id="ck-handle" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#C9D0E8"/>
+      <stop offset="0.5" stop-color="#F2F5FF"/>
+      <stop offset="1" stop-color="#AEB7D6"/>
+    </linearGradient>
+    <radialGradient id="ck-gloss" cx="0.35" cy="0.25" r="0.5">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="ck-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="108" cy="197" rx="62" ry="10" fill="#1E2552" opacity="0.14" filter="url(#ck-shadow)"/>
+
+  <g transform="translate(-12 0)">
+    <path d="M110 34c32 0 54 22 54 54 0 24-8 40-13 62-5 22-9 42-21 42-11 0-14-28-20-28s-9 28-20 28c-12 0-16-20-21-42-5-22-13-38-13-62 0-32 22-54 54-54Z" fill="url(#ck-tooth)"/>
+    <path d="M110 34c32 0 54 22 54 54 0 24-8 40-13 62-5 22-9 42-21 42-11 0-14-28-20-28s-9 28-20 28c-12 0-16-20-21-42-5-22-13-38-13-62 0-32 22-54 54-54Z" fill="none" stroke="#C9D1EA" stroke-width="1.5"/>
+    <ellipse cx="88" cy="70" rx="24" ry="30" fill="url(#ck-gloss)" transform="rotate(-18 88 70)"/>
+  </g>
+
+  <g transform="rotate(24 150 120)">
+    <rect x="144" y="92" width="9" height="86" rx="4.5" fill="url(#ck-handle)"/>
+    <rect x="144" y="150" width="9" height="28" rx="4.5" fill="#1E2552" opacity="0.85"/>
+    <circle cx="148.5" cy="78" r="28" fill="url(#ck-mirror)"/>
+    <circle cx="148.5" cy="78" r="28" fill="none" stroke="#FFFFFF" stroke-width="4.5"/>
+    <ellipse cx="139" cy="69" rx="10" ry="7" fill="#FFFFFF" opacity="0.6" transform="rotate(-30 141 72)"/>
+  </g>
+</svg>

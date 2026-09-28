@@ -1,0 +1,13 @@
+{
+  "name": "dental-clinic-sample",
+  "private": true,
+  "type": "module",
+  "description": "Static sample website for a dental clinic. Media tooling only - the site itself has no build step.",
+  "scripts": {
+    "media": "node scripts/fetch-media.mjs",
+    "serve": "npx serve ."
+  },
+  "devDependencies": {
+    "sharp": "^0.34.2"
+  }
+}

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="220" height="220" role="img" aria-label="Illustration of a bright tooth with sparkles">
+  <defs>
+    <linearGradient id="wh-tooth" x1="0.2" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.5" stop-color="#F3F9FE"/>
+      <stop offset="1" stop-color="#D6E7F3"/>
+    </linearGradient>
+    <linearGradient id="wh-spark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#CFF3FB"/>
+    </linearGradient>
+    <radialGradient id="wh-gloss" cx="0.35" cy="0.25" r="0.5">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="wh-halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#22B8DA" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#22B8DA" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="wh-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+
+  <circle cx="110" cy="104" r="86" fill="url(#wh-halo)"/>
+  <ellipse cx="110" cy="197" rx="56" ry="10" fill="#1E2552" opacity="0.14" filter="url(#wh-shadow)"/>
+
+  <path d="M110 34c32 0 54 22 54 54 0 24-8 40-13 62-5 22-9 42-21 42-11 0-14-28-20-28s-9 28-20 28c-12 0-16-20-21-42-5-22-13-38-13-62 0-32 22-54 54-54Z" fill="url(#wh-tooth)"/>
+  <path d="M110 34c32 0 54 22 54 54 0 24-8 40-13 62-5 22-9 42-21 42-11 0-14-28-20-28s-9 28-20 28c-12 0-16-20-21-42-5-22-13-38-13-62 0-32 22-54 54-54Z" fill="none" stroke="#C7DCEA" stroke-width="1.5"/>
+  <ellipse cx="90" cy="70" rx="23" ry="30" fill="url(#wh-gloss)" transform="rotate(-18 90 70)"/>
+
+  <path stroke="#22B8DA" stroke-width="1.6" d="M166 40c1.6 0 2 1.2 2.6 3.2.9 3 2.2 4.3 5.2 5.2 2 .6 3.2 1 3.2 2.6s-1.2 2-3.2 2.6c-3 .9-4.3 2.2-5.2 5.2-.6 2-1 3.2-2.6 3.2s-2-1.2-2.6-3.2c-.9-3-2.2-4.3-5.2-5.2-2-.6-3.2-1-3.2-2.6s1.2-2 3.2-2.6c3-.9 4.3-2.2 5.2-5.2.6-2 1-3.2 2.6-3.2Z" fill="url(#wh-spark)"/>
+  <path stroke="#22B8DA" stroke-width="1.4" d="M52 62c1.2 0 1.5.9 2 2.4.7 2.3 1.6 3.2 3.9 3.9 1.5.5 2.4.8 2.4 2s-.9 1.5-2.4 2c-2.3.7-3.2 1.6-3.9 3.9-.5 1.5-.8 2.4-2 2.4s-1.5-.9-2-2.4c-.7-2.3-1.6-3.2-3.9-3.9-1.5-.5-2.4-.8-2.4-2s.9-1.5 2.4-2c2.3-.7 3.2-1.6 3.9-3.9.5-1.5.8-2.4 2-2.4Z" fill="url(#wh-spark)" opacity="0.8"/>
+  <path stroke="#22B8DA" stroke-width="1.2" d="M172 104c1 0 1.3.8 1.7 2.1.6 2 1.4 2.8 3.4 3.4 1.3.4 2.1.7 2.1 1.7s-.8 1.3-2.1 1.7c-2 .6-2.8 1.4-3.4 3.4-.4 1.3-.7 2.1-1.7 2.1s-1.3-.8-1.7-2.1c-.6-2-1.4-2.8-3.4-3.4-1.3-.4-2.1-.7-2.1-1.7s.8-1.3 2.1-1.7c2-.6 2.8-1.4 3.4-3.4.4-1.3.7-2.1 1.7-2.1Z" fill="url(#wh-spark)" opacity="0.65"/>
+</svg>

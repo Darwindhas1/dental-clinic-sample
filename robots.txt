@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dental-clinic-sample.pages.dev/sitemap.xml

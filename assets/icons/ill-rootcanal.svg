@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="220" height="220" role="img" aria-label="Illustration of a tooth cross-section showing the root canals">
+  <defs>
+    <linearGradient id="rc-tooth" x1="0.2" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.55" stop-color="#FDF6EC"/>
+      <stop offset="1" stop-color="#F0DFC6"/>
+    </linearGradient>
+    <linearGradient id="rc-pulp" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FCC98E"/>
+      <stop offset="1" stop-color="#EF9A6A"/>
+    </linearGradient>
+    <radialGradient id="rc-gloss" cx="0.35" cy="0.25" r="0.5">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="rc-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="110" cy="197" rx="56" ry="10" fill="#1E2552" opacity="0.14" filter="url(#rc-shadow)"/>
+
+  <path d="M110 34c32 0 54 22 54 54 0 24-8 40-13 62-5 22-9 42-21 42-11 0-14-28-20-28s-9 28-20 28c-12 0-16-20-21-42-5-22-13-38-13-62 0-32 22-54 54-54Z" fill="url(#rc-tooth)"/>
+
+  <path d="M110 58c20 0 34 13 34 32 0 9-3 14-6 22-4 10-6 28-13 60-2 9-4 14-8 14-3 0-5-4-6-12-1-8-2-30-2-42-2-4-4-6-7-6s-6 2-7 6c-1 12-2 34-3 42-1 8-3 12-6 12-4 0-6-5-8-14-7-32-9-50-13-60-3-8-6-13-6-22 0-19 14-32 34-32Z" fill="url(#rc-pulp)" opacity="0.92"/>
+  <path d="M110 84c9 0 15 6 15 14 0 5-2 9-4 15-3 10-5 30-8 48" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>
+  <path d="M110 84c-9 0-15 6-15 14 0 5 2 9 4 15 3 10 5 30 8 48" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>
+
+  <path d="M110 34c32 0 54 22 54 54 0 24-8 40-13 62-5 22-9 42-21 42-11 0-14-28-20-28s-9 28-20 28c-12 0-16-20-21-42-5-22-13-38-13-62 0-32 22-54 54-54Z" fill="none" stroke="#E2CFAF" stroke-width="1.5"/>
+  <ellipse cx="86" cy="66" rx="17" ry="24" fill="url(#rc-gloss)" transform="rotate(-18 86 66)"/>
+</svg>

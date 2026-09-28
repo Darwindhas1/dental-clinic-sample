@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="220" height="220" role="img" aria-label="Illustration of a dental implant with a crown">
+  <defs>
+    <linearGradient id="im-crown" x1="0.2" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.55" stop-color="#F6F4FC"/>
+      <stop offset="1" stop-color="#E3DCF2"/>
+    </linearGradient>
+    <linearGradient id="im-metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9AA3C6"/>
+      <stop offset="0.35" stop-color="#EDF0FA"/>
+      <stop offset="0.7" stop-color="#B7BFDC"/>
+      <stop offset="1" stop-color="#848DB4"/>
+    </linearGradient>
+    <linearGradient id="im-gum" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBBFD8"/>
+      <stop offset="1" stop-color="#F08FBB"/>
+    </linearGradient>
+    <radialGradient id="im-gloss" cx="0.35" cy="0.25" r="0.55">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="im-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="110" cy="200" rx="58" ry="9" fill="#1E2552" opacity="0.14" filter="url(#im-shadow)"/>
+
+  <g>
+    <path d="M110 36c30 0 52 13 52 30 0 13-5 22-8 30H66c-3-8-8-17-8-30 0-17 22-30 52-30Z" fill="url(#im-crown)"/>
+    <path d="M74 44c6-6 14-9 22-9M124 35c8 0 16 3 22 9" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+    <path d="M110 36c30 0 52 13 52 30 0 13-5 22-8 30H66c-3-8-8-17-8-30 0-17 22-30 52-30Z" fill="none" stroke="#CFC9E6" stroke-width="1.5"/>
+    <ellipse cx="90" cy="56" rx="22" ry="13" fill="url(#im-gloss)" transform="rotate(-10 90 56)"/>
+  </g>
+
+  <path d="M62 98h96c6 0 10 5 10 11 0 12-12 21-31 21H83c-19 0-31-9-31-21 0-6 4-11 10-11Z" fill="url(#im-gum)"/>
+  <ellipse cx="88" cy="106" rx="24" ry="5" fill="#FFFFFF" opacity="0.32"/>
+
+  <g>
+    <rect x="100" y="104" width="20" height="16" rx="3" fill="url(#im-metal)"/>
+    <path d="M96 122h28l-3 13H99Zm2 17h24l-3 13h-18Zm2 17h20l-3 13h-14Zm2 17h16l-4 12c-1 3-3 5-4 5s-3-2-4-5Z" fill="url(#im-metal)"/>
+  </g>
+</svg>
