@@ -1099,7 +1099,9 @@ body.menu-open { overflow: hidden; }
 .page-hero .lead { margin-inline: auto; }
 .breadcrumb {
   display: flex;
+  align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 18px;
   font-size: 0.88rem;
