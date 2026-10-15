@@ -1,6 +1,7 @@
 # Dental Clinic Sample Website
 
-**Live:** https://darwindhas1.github.io/dental-clinic-sample/
+**Live:** https://dental-clinic-sample.darwin14.workers.dev/  
+**Also on GitHub Pages:** https://darwindhas1.github.io/dental-clinic-sample/
 
 A finished, demo-ready website for a Malaysian dental clinic. Plain HTML, CSS and
 vanilla JS — no framework, no build step. Drop the folder on any static host.

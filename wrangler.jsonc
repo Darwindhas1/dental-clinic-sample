@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "dental-clinic-sample",
+  "compatibility_date": "2026-10-12",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    // Default handling, so "/" resolves to index.html. The site keeps .html in
+    // its internal links so the same files also work on GitHub Pages and from
+    // the filesystem; Cloudflare redirects those to extensionless URLs.
+    "html_handling": "auto-trailing-slash",
+    // Unknown paths get the designed 404 page rather than an empty response.
+    "not_found_handling": "404-page"
+  }
+}

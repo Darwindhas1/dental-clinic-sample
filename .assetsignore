@@ -1,0 +1,11 @@
+# Tooling and config - not part of the published site
+scripts
+node_modules
+.env
+.env.example
+.gitignore
+package.json
+package-lock.json
+README.md
+wrangler.jsonc
+.assetsignore

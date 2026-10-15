@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://darwindhas1.github.io/dental-clinic-sample/sitemap.xml
+Sitemap: https://dental-clinic-sample.darwin14.workers.dev/sitemap.xml

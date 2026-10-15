@@ -5,9 +5,12 @@
   "description": "Static sample website for a dental clinic. Media tooling only - the site itself has no build step.",
   "scripts": {
     "media": "node scripts/fetch-media.mjs",
-    "serve": "npx serve ."
+    "serve": "npx serve .",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
   },
   "devDependencies": {
-    "sharp": "^0.34.2"
+    "sharp": "^0.34.2",
+    "wrangler": "^4.151.0"
   }
 }
