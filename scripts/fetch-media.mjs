@@ -5,6 +5,10 @@
  * illustrations, converts everything to sized WebP inside /assets/img/, and writes
  * /assets/img/credits.json with photographer names + source URLs.
  *
+ * Sizing rule: banners and the hero stay large (max 1600, hero 1100); anything
+ * rendered as a card is capped at 800 wide. Each photo also gets a -sm companion
+ * at 56% for srcset.
+ *
  * Run with:  npm run media
  *
  * The keys live ONLY here. The published site serves local files and never talks
@@ -44,11 +48,11 @@ const PHOTOS = [
   // hero + key page imagery
   { name: 'hero-smile',      q: 'beautiful smile teeth',        i: 6, w: 1100, h: 1400 },
   { name: 'about-hero',      q: 'modern dental office',         i: 1, w: 1600, h: 860 },
-  { name: 'about-story',     q: 'dentist team clinic',          i: 1, w: 960,  h: 800 },
-  { name: 'how-it-works',    q: 'dentist patient consultation', i: 0, w: 1000, h: 820 },
+  { name: 'about-story',     q: 'dentist team clinic',          i: 1, w: 800,  h: 667 },
+  { name: 'how-it-works',    q: 'dentist patient consultation', i: 0, w: 800,  h: 656 },
   { name: 'cta-band',        q: 'dentist smiling with patient', i: 4, w: 1600, h: 760 },
   { name: 'faq-dentist',     q: 'female dentist smiling',       i: 0, w: 760,  h: 900 },
-  { name: 'family-smile',    q: 'happy family smiling',         i: 0, w: 960,  h: 720 },
+  { name: 'family-smile',    q: 'happy family smiling',         i: 0, w: 800,  h: 600 },
   { name: 'services-hero',   q: 'dentist smiling with patient', i: 2, w: 1600, h: 860 },
   { name: 'contact-hero',    q: 'dental clinic interior',       i: 3, w: 1600, h: 700 },
 
@@ -58,20 +62,20 @@ const PHOTOS = [
   { name: 'dentist-3', q: 'indian woman doctor portrait',            i: 2, w: 780, h: 900 },
 
   // clinic gallery
-  { name: 'gallery-1', q: 'modern dental office',         i: 4, w: 900, h: 700 },
-  { name: 'gallery-2', q: 'dentist chair clinic',       i: 0, w: 900, h: 700 },
-  { name: 'gallery-3', q: 'dentist smiling with patient', i: 5, w: 900, h: 700 },
-  { name: 'gallery-4', q: 'dental x ray',               i: 0, w: 900, h: 700 },
-  { name: 'gallery-5', q: 'dentist chair clinic',       i: 2, w: 900, h: 700 },
-  { name: 'gallery-6', q: 'dentist smiling with patient', i: 7, w: 900, h: 700 },
+  { name: 'gallery-1', q: 'modern dental office',         i: 4, w: 800, h: 622 },
+  { name: 'gallery-2', q: 'dentist chair clinic',       i: 0, w: 800, h: 622 },
+  { name: 'gallery-3', q: 'dentist smiling with patient', i: 5, w: 800, h: 622 },
+  { name: 'gallery-4', q: 'dental x ray',               i: 0, w: 800, h: 622 },
+  { name: 'gallery-5', q: 'dentist chair clinic',       i: 2, w: 800, h: 622 },
+  { name: 'gallery-6', q: 'dentist smiling with patient', i: 7, w: 800, h: 622 },
 
   // blog
-  { name: 'blog-1', q: 'nervous patient dentist', i: 0, w: 960, h: 640 },
-  { name: 'blog-2', q: 'toothbrush toothpaste',   i: 0, w: 960, h: 640 },
-  { name: 'blog-3', q: 'braces teeth smile',      i: 0, w: 960, h: 640 },
-  { name: 'blog-4', q: 'healthy food fruit',      i: 0, w: 960, h: 640 },
-  { name: 'blog-5', q: 'child dentist checkup',   i: 0, w: 960, h: 640 },
-  { name: 'blog-6', q: 'coffee cup tea',          i: 0, w: 960, h: 640 },
+  { name: 'blog-1', q: 'nervous patient dentist', i: 0, w: 800, h: 533 },
+  { name: 'blog-2', q: 'toothbrush toothpaste',   i: 0, w: 800, h: 533 },
+  { name: 'blog-3', q: 'braces teeth smile',      i: 0, w: 800, h: 533 },
+  { name: 'blog-4', q: 'healthy food fruit',      i: 0, w: 800, h: 533 },
+  { name: 'blog-5', q: 'child dentist checkup',   i: 0, w: 800, h: 533 },
+  { name: 'blog-6', q: 'coffee cup tea',          i: 0, w: 800, h: 533 },
   { name: 'blog-1-wide', q: 'nervous patient dentist', i: 0, w: 1600, h: 800 },
 
   // small round avatars for the review / member stacks

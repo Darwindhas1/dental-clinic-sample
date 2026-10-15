@@ -111,15 +111,16 @@ blockquote, figure { margin: 0; }
 .skip-link {
   position: absolute;
   left: 16px;
-  top: -80px;
+  top: 16px;
   z-index: 200;
   padding: 12px 20px;
   border-radius: var(--r-pill);
   background: var(--navy);
   color: var(--white);
-  transition: top 0.2s var(--ease);
+  transform: translateY(-200%);
+  transition: transform 0.2s var(--ease);
 }
-.skip-link:focus { top: 16px; }
+.skip-link:focus { transform: translateY(0); }
 
 .visually-hidden {
   position: absolute !important;
@@ -243,7 +244,7 @@ blockquote, figure { margin: 0; }
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), background 0.25s var(--ease);
+  transition: transform var(--dur) var(--ease), background 0.25s var(--ease);
 }
 
 .btn__arrow {
@@ -258,7 +259,7 @@ blockquote, figure { margin: 0; }
 }
 .btn__arrow svg { transition: transform var(--dur) var(--ease); }
 
-.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.btn:hover { transform: translateY(-2px); }
 .btn:hover .btn__arrow { transform: rotate(-45deg); }
 .btn:active { transform: translateY(0); }
 
@@ -317,16 +318,22 @@ blockquote, figure { margin: 0; }
   left: 0;
   right: 0;
   z-index: 100;
-  padding-block: 14px;
-  transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease), padding 0.35s var(--ease);
+  padding-block: 11px;
 }
-.site-header.is-scrolled {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+/* The scrolled background sits on a pseudo-element so the only animated
+   property is opacity - no blur, no layout, no repaint of the header. */
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(252, 251, 254, 0.94);
   box-shadow: 0 1px 0 rgba(30, 37, 82, 0.07);
-  padding-block: 8px;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+  pointer-events: none;
 }
+.site-header.is-scrolled::before { opacity: 1; }
+.header-inner { position: relative; }
 
 .header-inner {
   display: flex;
@@ -355,10 +362,8 @@ blockquote, figure { margin: 0; }
   gap: 4px;
   padding: 5px;
   border-radius: var(--r-pill);
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
 }
 .nav a {
   padding: 10px 18px;
@@ -403,17 +408,18 @@ blockquote, figure { margin: 0; }
   content: '';
   position: absolute;
   left: 0;
+  top: 0;
   width: 18px;
   height: 2px;
   border-radius: 2px;
   background: var(--navy);
-  transition: transform 0.3s var(--ease), top 0.3s var(--ease);
+  transition: transform 0.3s var(--ease);
 }
-.nav-toggle span::before { top: -6px; }
-.nav-toggle span::after { top: 6px; }
+.nav-toggle span::before { transform: translateY(-6px); }
+.nav-toggle span::after { transform: translateY(6px); }
 .nav-toggle[aria-expanded='true'] span { background: transparent; }
-.nav-toggle[aria-expanded='true'] span::before { top: 0; transform: rotate(45deg); }
-.nav-toggle[aria-expanded='true'] span::after { top: 0; transform: rotate(-45deg); }
+.nav-toggle[aria-expanded='true'] span::before { transform: rotate(45deg); }
+.nav-toggle[aria-expanded='true'] span::after { transform: rotate(-45deg); }
 
 /* full-screen mobile menu */
 .mobile-menu {
@@ -515,9 +521,9 @@ body.menu-open { overflow: hidden; }
   border-radius: var(--r-md);
   background: var(--white);
   box-shadow: var(--shadow-sm);
-  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  transition: transform var(--dur) var(--ease);
 }
-.info-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.info-card:hover { transform: translateY(-4px); }
 .info-card__icon {
   display: grid;
   place-items: center;
@@ -653,9 +659,9 @@ body.menu-open { overflow: hidden; }
   box-shadow: var(--shadow-sm);
   text-align: center;
   overflow: hidden;
-  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  transition: transform var(--dur) var(--ease);
 }
-.service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.service-card:hover { transform: translateY(-8px); }
 .service-card h3 { font-size: 1.32rem; margin-bottom: 10px; }
 .service-card__price-label { font-size: 0.85rem; color: var(--navy-soft); }
 .service-card__price {
@@ -723,9 +729,7 @@ body.menu-open { overflow: hidden; }
   gap: 14px;
   padding: 16px 18px;
   border-radius: var(--r-md);
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.93);
   box-shadow: var(--shadow-md);
   color: var(--navy);
 }
@@ -835,7 +839,8 @@ body.menu-open { overflow: hidden; }
   gap: 20px;
   width: max-content;
 }
-.slider__track.is-animating { animation: marquee 34s linear infinite; }
+.slider__track.is-animating { animation: marquee 34s linear infinite; animation-play-state: paused; }
+.slider__track.is-animating.is-playing { animation-play-state: running; }
 .slider:hover .slider__track.is-animating,
 .slider:focus-within .slider__track.is-animating { animation-play-state: paused; }
 
@@ -938,9 +943,9 @@ body.menu-open { overflow: hidden; }
   background: var(--white);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
-  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  transition: transform var(--dur) var(--ease);
 }
-.post-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.post-card:hover { transform: translateY(-6px); }
 .post-card__media { overflow: hidden; }
 .post-card__media img {
   width: 100%;
@@ -1126,9 +1131,9 @@ body.menu-open { overflow: hidden; }
   border-radius: var(--r-lg);
   background: var(--white);
   box-shadow: var(--shadow-sm);
-  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  transition: transform var(--dur) var(--ease);
 }
-.value-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.value-card:hover { transform: translateY(-6px); }
 .value-card__icon {
   display: grid;
   place-items: center;
@@ -1172,8 +1177,7 @@ body.menu-open { overflow: hidden; }
   display: none;
   place-items: center;
   padding: 24px;
-  background: rgba(16, 20, 46, 0.86);
-  backdrop-filter: blur(6px);
+  background: rgba(16, 20, 46, 0.92);
 }
 .lightbox[open] { display: grid; }
 .lightbox img {
@@ -1285,9 +1289,9 @@ body.menu-open { overflow: hidden; }
   border-radius: var(--r-lg);
   background: var(--white);
   box-shadow: var(--shadow-sm);
-  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  transition: transform var(--dur) var(--ease);
 }
-.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+.contact-card:hover { transform: translateY(-5px); }
 .contact-card__icon {
   display: grid;
   place-items: center;
@@ -1415,20 +1419,21 @@ body.menu-open { overflow: hidden; }
   transition: transform 0.3s var(--ease);
 }
 .wa-fab:hover { transform: scale(1.08); }
+/* The old infinite pulse kept a compositor animation alive on every page for
+   the whole visit. The ring now only expands on hover or focus. */
 .wa-fab::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: 50%;
   background: #25D366;
-  animation: wa-pulse 2.4s ease-out infinite;
+  opacity: 0.45;
+  transform: scale(1);
+  transition: transform 0.55s var(--ease), opacity 0.55s var(--ease);
   z-index: -1;
 }
-@keyframes wa-pulse {
-  0% { transform: scale(1); opacity: 0.55; }
-  70% { transform: scale(1.7); opacity: 0; }
-  100% { transform: scale(1.7); opacity: 0; }
-}
+.wa-fab:hover::before,
+.wa-fab:focus-visible::before { transform: scale(1.6); opacity: 0; }
 .wa-fab__tip {
   position: absolute;
   right: calc(100% + 12px);
@@ -1458,7 +1463,6 @@ body.menu-open { overflow: hidden; }
    fully readable with JS disabled or if GSAP fails to load.                  */
 
 .js-anim [data-reveal] { opacity: 0; }
-.js-anim .word { display: inline-block; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

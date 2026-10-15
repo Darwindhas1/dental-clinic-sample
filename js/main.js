@@ -1,7 +1,8 @@
 /* ==========================================================================
    Senyum Dental Clinic — site behaviour
-   Vanilla JS. GSAP + ScrollTrigger and Lenis are loaded from a CDN and every
-   use of them is guarded, so the site still works if they fail to load.
+   Vanilla JS. GSAP + ScrollTrigger is loaded from a CDN and every use of it is
+   guarded, so the site still works if it fails to load. Scrolling is native —
+   no scroll-hijacking library — and only transform and opacity are animated.
    ========================================================================== */
 
 (function () {
@@ -148,6 +149,15 @@
       $$('a, button', clone).forEach(function (el) { el.setAttribute('tabindex', '-1'); });
       while (clone.firstChild) track.appendChild(clone.firstChild);
       track.classList.add('is-animating');
+
+      // The marquee is a permanently running compositor job, so it is only
+      // allowed to run while the section is actually on screen.
+      if (typeof IntersectionObserver === 'undefined') { track.classList.add('is-playing'); return; }
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          track.classList.toggle('is-playing', entry.isIntersecting);
+        });
+      }, { rootMargin: '100px' }).observe(slider);
     });
   }
 
@@ -262,28 +272,6 @@
 
   /* ----------------------------------------------------------- animation -- */
 
-  function splitWords(el) {
-    if (el.dataset.split === 'done') return $$('.word', el);
-    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
-    var nodes = [];
-    while (walker.nextNode()) nodes.push(walker.currentNode);
-
-    nodes.forEach(function (node) {
-      if (!node.nodeValue.trim()) return;
-      var frag = document.createDocumentFragment();
-      node.nodeValue.split(/(\s+)/).forEach(function (chunk) {
-        if (!chunk.trim()) { frag.appendChild(document.createTextNode(chunk)); return; }
-        var span = document.createElement('span');
-        span.className = 'word';
-        span.textContent = chunk;
-        frag.appendChild(span);
-      });
-      node.parentNode.replaceChild(frag, node);
-    });
-    el.dataset.split = 'done';
-    return $$('.word', el);
-  }
-
   function countUp(el) {
     var target = parseFloat(el.getAttribute('data-count'));
     var suffix = el.getAttribute('data-count-suffix') || '';
@@ -314,63 +302,85 @@
     }
 
     var gsap = window.gsap;
-    gsap.registerPlugin(window.ScrollTrigger);
+    var ST = window.ScrollTrigger;
+    gsap.registerPlugin(ST);
 
-    // Lenis smooth scroll, kept in sync with ScrollTrigger.
-    if (typeof window.Lenis !== 'undefined') {
-      var lenis = new window.Lenis({ duration: 1.05, smoothWheel: true });
-      lenis.on('scroll', window.ScrollTrigger.update);
-      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-      gsap.ticker.lagSmoothing(0);
+    /* will-change is a promise to the compositor, not a speed switch: left on
+       permanently it costs memory and a layer per element. It goes on as the
+       tween starts and comes straight off when it finishes.                 */
+    /* A single element can carry its own .length - a <form> reports its control
+       count - so normalise on nodeType rather than on length. */
+    function asList(t) {
+      if (!t) return [];
+      if (Array.isArray(t)) return t;
+      if (t.nodeType) return [t];
+      return Array.prototype.slice.call(t);
+    }
+    function lift(targets) {
+      asList(targets).forEach(function (el) { el.style.willChange = 'transform, opacity'; });
+    }
+    function drop(targets) {
+      asList(targets).forEach(function (el) { el.style.willChange = ''; });
     }
 
-    // Headings reveal word by word.
-    $$('[data-reveal="words"]').forEach(function (el) {
-      var words = splitWords(el);
-      gsap.set(el, { opacity: 1 });
-      gsap.from(words, {
-        yPercent: 110,
-        opacity: 0,
-        duration: 0.85,
-        ease: 'power3.out',
-        stagger: 0.035,
-        scrollTrigger: { trigger: el, start: 'top 88%', once: true },
-      });
-    });
+    // One fade-up per element. once:true plays it a single time, and the
+    // trigger is killed on completion so nothing is left listening to scroll.
+    function revealOnce(targets, trigger, stagger) {
+      var items = asList(targets);
+      if (!items.length) return;
+      gsap.fromTo(items,
+        { opacity: 0, y: 28 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+          stagger: stagger || 0,
+          force3D: true,
+          onStart: function () { lift(items); },
+          onComplete: function () {
+            drop(items);
+            if (this.scrollTrigger) this.scrollTrigger.kill();
+          },
+          scrollTrigger: { trigger: trigger, start: 'top 90%', once: true },
+        });
+    }
 
-    // Everything else fades and slides up, in groups where asked.
-    $$('[data-reveal="up"]').forEach(function (el) {
-      gsap.fromTo(el, { opacity: 0, y: 34 }, {
-        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 90%', once: true },
-      });
-    });
-
+    // Headings now fade up as one block rather than word by word, which
+    // removes the per-word DOM rewrite and the extra layers it created.
+    $$('[data-reveal="words"]').forEach(function (el) { revealOnce(el, el); });
+    $$('[data-reveal="up"]').forEach(function (el) { revealOnce(el, el); });
     $$('[data-reveal-group]').forEach(function (group) {
-      var items = $$('[data-reveal="item"]', group);
-      gsap.fromTo(items, { opacity: 0, y: 40 }, {
-        opacity: 1, y: 0, duration: 0.75, ease: 'power3.out', stagger: 0.1,
-        scrollTrigger: { trigger: group, start: 'top 86%', once: true },
-      });
+      revealOnce($$('[data-reveal="item"]', group), group, 0.08);
     });
 
-    // Slow parallax on the hero portrait.
+    /* Hero parallax: transform only, desktop only. A scrubbed tween runs work
+       on every scroll frame, which is the one thing a phone cannot spare. */
     var heroImg = $('.hero__media img');
-    if (heroImg) {
+    if (heroImg && window.matchMedia('(min-width: 901px)').matches) {
       gsap.to(heroImg, {
-        yPercent: 7,
+        yPercent: 6,
         ease: 'none',
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 },
+        force3D: true,
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+          onToggle: function (self) {
+            heroImg.style.willChange = self.isActive ? 'transform' : '';
+          },
+        },
       });
     }
 
-    // Counters fire once, in view.
+    // Counters fire once, in view, then the trigger is discarded.
     $$('[data-count]').forEach(function (el) {
-      window.ScrollTrigger.create({
+      ST.create({
         trigger: el,
         start: 'top 92%',
         once: true,
-        onEnter: function () { countUp(el); },
+        onEnter: function (self) { countUp(el); self.kill(); },
       });
     });
   }
