@@ -21,6 +21,11 @@
     <filter id="ck-shadow" x="-40%" y="-40%" width="180%" height="180%">
       <feGaussianBlur stdDeviation="7"/>
     </filter>
+    <radialGradient id="ch-hot" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.98"/>
+      <stop offset="0.55" stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
   </defs>
 
   <ellipse cx="108" cy="197" rx="62" ry="10" fill="#1E2552" opacity="0.14" filter="url(#ck-shadow)"/>
@@ -38,4 +43,5 @@
     <circle cx="148.5" cy="78" r="28" fill="none" stroke="#FFFFFF" stroke-width="4.5"/>
     <ellipse cx="139" cy="69" rx="10" ry="7" fill="#FFFFFF" opacity="0.6" transform="rotate(-30 141 72)"/>
   </g>
+  <ellipse class="spec-hot" cx="96" cy="58" rx="13" ry="8" fill="url(#ch-hot)" transform="rotate(-22 96 58)"/>
 </svg>

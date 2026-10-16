@@ -47,8 +47,12 @@
       if (!svc) return;
       var name = $('[data-service-name]', el);
       var price = $('[data-service-price]', el);
+      var label = $('[data-service-label]', el);
       if (name) name.textContent = svc.name;
       if (price) price.textContent = svc.price;
+      // "Price on consultation" reads wrong under a "Starting at" label
+      if (label) label.hidden = !!svc.onRequest;
+      el.classList.toggle('service-card--on-request', !!svc.onRequest);
     });
 
     var year = $('[data-year]');

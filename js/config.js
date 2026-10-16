@@ -43,13 +43,15 @@ window.CLINIC = {
   /* -------------------------------------------------------------- prices --
      Sample placeholders. Used by the service cards on the home page and the
      detail rows on services.html.                                            */
+  /* price shows under a "Starting at" label; onRequest hides that label and
+     prints the phrase on its own instead.                                    */
   SERVICES: [
-    { id: 'checkup',   name: 'General Check-up & Scaling', price: 'From RM80',  tint: 'mint'  },
-    { id: 'whitening', name: 'Teeth Whitening',            price: 'From RM600', tint: 'cyan'  },
-    { id: 'rootcanal', name: 'Root Canal Treatment',       price: 'From RM450', tint: 'peach' },
-    { id: 'gums',      name: 'Gum Disease Treatment',      price: 'From RM150', tint: 'coral' },
-    { id: 'implant',   name: 'Dental Implants',            price: 'Enquire Now', tint: 'pink' },
-    { id: 'braces',    name: 'Braces & Orthodontics',      price: 'Enquire Now', tint: 'blue' },
+    { id: 'checkup',   name: 'General Check-up & Scaling', price: 'RM80',  tint: 'mint'  },
+    { id: 'whitening', name: 'Teeth Whitening',            price: 'RM600', tint: 'cyan'  },
+    { id: 'rootcanal', name: 'Root Canal Treatment',       price: 'RM450', tint: 'peach' },
+    { id: 'gums',      name: 'Gum Disease Treatment',      price: 'RM150', tint: 'coral' },
+    { id: 'implant',   name: 'Dental Implants',            price: 'Price on consultation', onRequest: true, tint: 'pink' },
+    { id: 'braces',    name: 'Braces & Orthodontics',      price: 'Price on consultation', onRequest: true, tint: 'blue' },
   ],
 
   /* -------------------------------------------------------------- people -- */

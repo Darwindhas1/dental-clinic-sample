@@ -22,6 +22,11 @@
     <filter id="im-shadow" x="-40%" y="-40%" width="180%" height="180%">
       <feGaussianBlur stdDeviation="7"/>
     </filter>
+    <radialGradient id="im-hot" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.98"/>
+      <stop offset="0.55" stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
   </defs>
 
   <ellipse cx="110" cy="200" rx="58" ry="9" fill="#1E2552" opacity="0.14" filter="url(#im-shadow)"/>
@@ -40,4 +45,5 @@
     <rect x="100" y="104" width="20" height="16" rx="3" fill="url(#im-metal)"/>
     <path d="M96 122h28l-3 13H99Zm2 17h24l-3 13h-18Zm2 17h20l-3 13h-14Zm2 17h16l-4 12c-1 3-3 5-4 5s-3-2-4-5Z" fill="url(#im-metal)"/>
   </g>
+  <ellipse class="spec-hot" cx="92" cy="52" rx="17" ry="8" fill="url(#im-hot)" transform="rotate(-10 92 52)"/>
 </svg>

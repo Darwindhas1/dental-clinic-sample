@@ -31,18 +31,19 @@
   /* radii */
   --r-sm: 12px;
   --r-md: 20px;
-  --r-lg: 28px;
+  --r-lg: 24px;
   --r-pill: 999px;
 
   /* spacing + layout */
-  --container: 1200px;
+  --container: 1240px;
   --header-h: 78px;
   --gutter: 16px;
   --section-y: clamp(64px, 8vw, 128px);
 
   /* elevation */
-  --shadow-sm: 0 2px 10px rgba(30, 37, 82, 0.06);
-  --shadow-md: 0 10px 30px rgba(30, 37, 82, 0.08);
+  /* The reference leans on large, very soft shadows rather than tight ones. */
+  --shadow-sm: 0 1px 2px rgba(30, 37, 82, 0.04), 0 10px 28px rgba(30, 37, 82, 0.05);
+  --shadow-md: 0 2px 4px rgba(30, 37, 82, 0.04), 0 18px 42px rgba(30, 37, 82, 0.09);
   --shadow-lg: 0 24px 60px rgba(30, 37, 82, 0.12);
 
   /* motion */
@@ -96,6 +97,9 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.08;
 }
 
+/* Big display type runs lighter and tighter than the UI weights, the way the
+   reference does: weight 500, leading at 1, tracking around -0.03em. */
+
 p { margin: 0 0 1em; }
 p:last-child { margin-bottom: 0; }
 
@@ -135,14 +139,19 @@ blockquote, figure { margin: 0; }
 /* ------------------------------------------------------------- typography -- */
 
 .display {
-  font-size: clamp(2.5rem, 6.4vw, 5.1rem);
-  line-height: 1.02;
-  letter-spacing: -0.035em;
+  /* Capped so "Brighter Smiles" still breaks onto two lines with the inline
+     badge; any larger and it splits into three with a ragged indent. */
+  font-size: clamp(2.5rem, 6vw, 5.35rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
 }
 
 .h2 {
   font-size: clamp(2rem, 4.4vw, 3.5rem);
-  line-height: 1.08;
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
 }
 
 .h3 {
@@ -156,13 +165,15 @@ blockquote, figure { margin: 0; }
   font-family: 'Instrument Serif', Georgia, serif;
   font-style: italic;
   font-weight: 400;
+  font-size: 0.94em;
   letter-spacing: -0.01em;
 }
 
 .lead {
-  font-size: clamp(1.02rem, 1.4vw, 1.18rem);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
   color: var(--navy-soft);
-  max-width: 56ch;
+  max-width: 54ch;
 }
 
 .muted { color: var(--muted); }
@@ -194,9 +205,9 @@ blockquote, figure { margin: 0; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
   text-align: center;
-  margin-bottom: clamp(40px, 5vw, 72px);
+  margin-bottom: clamp(48px, 6vw, 88px);
 }
 .section-head--split {
   flex-direction: row;
@@ -217,10 +228,10 @@ blockquote, figure { margin: 0; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.92rem;
+  font-size: 1.125rem;
   font-weight: 500;
   color: var(--navy);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 .eyebrow svg { flex: none; color: var(--accent); }
 .section--dark .eyebrow { color: rgba(255, 255, 255, 0.9); }
@@ -241,7 +252,7 @@ blockquote, figure { margin: 0; }
   border-radius: var(--r-pill);
   background: var(--btn-bg);
   color: var(--btn-fg);
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 500;
   cursor: pointer;
   transition: transform var(--dur) var(--ease), background 0.25s var(--ease);
@@ -520,7 +531,7 @@ body.menu-open { overflow: hidden; }
   padding: 16px 22px 16px 16px;
   border-radius: var(--r-md);
   background: var(--white);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   transition: transform var(--dur) var(--ease);
 }
 .info-card:hover { transform: translateY(-4px); }
@@ -671,7 +682,7 @@ body.menu-open { overflow: hidden; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 34px 26px 84px;
+  padding: 32px 26px 70px;
   border-radius: var(--r-lg);
   background: linear-gradient(180deg, var(--tint) 0%, var(--white) 78%);
   box-shadow: var(--shadow-sm);
@@ -681,17 +692,25 @@ body.menu-open { overflow: hidden; }
 }
 .service-card:hover { transform: translateY(-8px); }
 .service-card h3 { font-size: 1.32rem; margin-bottom: 10px; }
-.service-card__price-label { font-size: 0.85rem; color: var(--navy-soft); }
+.service-card__price-label {
+  font-size: 0.9rem;
+  color: var(--navy-soft);
+  margin-bottom: 2px;
+}
+.service-card__price-label[hidden] { display: none; }
 .service-card__price {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 500;
   color: var(--navy);
   letter-spacing: -0.03em;
+  line-height: 1.15;
 }
+/* "Price on consultation" has no numeral to carry, so it reads at body size. */
+.service-card--on-request .service-card__price { font-size: 1.1rem; font-weight: 500; }
 .service-card__art {
-  width: min(210px, 68%);
+  width: min(220px, 74%);
   height: auto;
-  margin: 20px auto 0;
+  margin: 14px auto 0;
   transition: transform var(--dur) var(--ease);
 }
 .service-card:hover .service-card__art { transform: translateY(-6px) scale(1.04); }
@@ -784,26 +803,29 @@ body.menu-open { overflow: hidden; }
 }
 .doctor-card__arc {
   position: relative;
-  height: 340px;
-  margin: 26px 22px 0;
+  height: 356px;
+  margin: 22px 18px 0;
   border-radius: 180px 180px 18px 18px;
   background: var(--arc);
   overflow: hidden;
 }
-/* The portrait sits inside the arc but a little narrower, so the pastel reads
-   as a halo around the dentist rather than being hidden behind the photo. */
+/* The portraits are transparent cut-outs, so they sit straight on the pastel
+   arc: contained rather than cropped, anchored to the bottom so the head sits
+   near the top of the arc. */
 .doctor-card__arc img {
   position: absolute;
-  left: 8%;
+  left: 50%;
   bottom: 0;
-  width: 84%;
-  height: 90%;
-  object-fit: cover;
-  object-position: center 16%;
-  border-radius: 150px 150px 0 0;
+  width: auto;
+  height: 97%;
+  max-width: 108%;
+  object-fit: contain;
+  object-position: bottom center;
+  border-radius: 0;
+  transform: translateX(-50%);
   transition: transform 0.6s var(--ease);
 }
-.doctor-card:hover .doctor-card__arc img { transform: scale(1.05); }
+.doctor-card:hover .doctor-card__arc img { transform: translateX(-50%) scale(1.04); }
 .doctor-card__plate {
   position: relative;
   margin: -58px 26px 0;
@@ -1379,9 +1401,10 @@ body.menu-open { overflow: hidden; }
 .site-footer h4,
 .footer-heading {
   color: var(--white);
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin-bottom: 18px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 22px;
 }
 .site-footer a { color: rgba(255, 255, 255, 0.7); transition: color 0.2s; }
 .site-footer a:hover { color: var(--white); }
@@ -1395,12 +1418,12 @@ body.menu-open { overflow: hidden; }
 .footer-list { list-style: none; display: grid; gap: 2px; font-size: 0.95rem; }
 .footer-list li { display: flex; align-items: center; min-height: 40px; }
 .footer-list a { display: inline-flex; align-items: center; min-height: 44px; }
-.socials { display: flex; gap: 10px; margin-top: 20px; }
+.socials { display: flex; gap: 12px; margin-top: 24px; }
 .socials a {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
   transition: background 0.25s var(--ease), transform 0.25s var(--ease);
@@ -1539,3 +1562,27 @@ body.menu-open { overflow: hidden; }
   .mobile-menu a { font-size: 1.6rem; }
   .wa-fab { width: 54px; height: 54px; right: 16px; bottom: 16px; }
 }
+
+/* ------------------------------------------------- equal-height card rows -- */
+/* Grid already stretches rows; these make the inner content agree so the
+   titles, prices and CTAs line up across a row rather than floating. */
+.card-grid > * { min-width: 0; }
+
+.post-card__body > p { margin-bottom: 0; }
+.post-card__body .link-arrow { margin-top: auto; }
+
+.value-card,
+.contact-card { display: flex; flex-direction: column; }
+.value-card p,
+.contact-card p { margin-top: auto; }
+
+.service-card h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.64em;
+}
+.service-card__art { margin-top: auto; }
+
+.doctor-card { display: flex; flex-direction: column; }
+.doctor-card .btn { margin-top: auto; }
