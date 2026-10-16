@@ -354,26 +354,6 @@
       revealOnce($$('[data-reveal="item"]', group), group, 0.08);
     });
 
-    /* Hero parallax: transform only, desktop only. A scrubbed tween runs work
-       on every scroll frame, which is the one thing a phone cannot spare. */
-    var heroImg = $('.hero__media img');
-    if (heroImg && window.matchMedia('(min-width: 901px)').matches) {
-      gsap.to(heroImg, {
-        yPercent: 6,
-        ease: 'none',
-        force3D: true,
-        scrollTrigger: {
-          trigger: '.hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-          onToggle: function (self) {
-            heroImg.style.willChange = self.isActive ? 'transform' : '';
-          },
-        },
-      });
-    }
-
     // Counters fire once, in view, then the trigger is discarded.
     $$('[data-count]').forEach(function (el) {
       ST.create({

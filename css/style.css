@@ -554,28 +554,46 @@ body.menu-open { overflow: hidden; }
   text-underline-offset: 3px;
 }
 
-.hero__media {
-  position: relative;
-  justify-self: end;
-  width: 100%;
-  max-width: 560px;
-}
+/* The model is a transparent cut-out sitting straight on the gradient: no
+   frame, no mask, no box. The column itself stays in the grid so it reserves
+   her space and the text can never run underneath her. */
+.hero__media { position: static; }
+
 .hero__media img {
   width: 100%;
-  border-radius: 220px 220px var(--r-lg) var(--r-lg);
-  -webkit-mask-image: linear-gradient(180deg, #000 0 56%, rgba(0, 0, 0, 0) 100%);
-  mask-image: linear-gradient(180deg, #000 0 56%, rgba(0, 0, 0, 0) 100%);
+  height: auto;
 }
 
-/* On wide screens the portrait runs past the container and is clipped by the
-   section, so it bleeds off the right edge the way the reference does. */
-@media (min-width: 1100px) {
-  .hero__media {
-    justify-self: start;
-    width: calc(100% + 7vw);
+@media (min-width: 901px) {
+  .hero__media img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    /* Sized so the top of her head clears the fixed header and her left edge
+       stays clear of the copy column. */
+    width: min(38vw, 530px);
+    height: auto;
     max-width: none;
   }
 }
+
+/* Soft static lilac glow behind her - a plain radial gradient, no blur filter. */
+.hero::after {
+  content: '';
+  position: absolute;
+  right: -4vw;
+  bottom: -8%;
+  z-index: 0;
+  width: min(46vw, 660px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 150, 224, 0.42) 0%, rgba(214, 178, 232, 0.22) 45%, rgba(228, 200, 240, 0) 70%);
+  pointer-events: none;
+}
+
+/* Text column sits above both the glow and the cut-out. */
+.hero-grid > div:first-child { position: relative; z-index: 2; }
 
 /* ---------------------------------------------------------- membership -- */
 
@@ -1498,8 +1516,10 @@ body.menu-open { overflow: hidden; }
   .service-row,
   .cta-band__inner { grid-template-columns: minmax(0, 1fr); }
   .service-row--flip .service-row__media { order: 0; }
-  .hero__media { justify-self: center; max-width: 420px; }
-  .hero__media img { border-radius: var(--r-lg); -webkit-mask-image: none; mask-image: none; }
+  .hero__media { justify-self: center; width: 100%; }
+  /* ~80% of the viewport once the container gutter is accounted for. */
+  .hero__media img { width: 88%; margin-inline: auto; }
+  .hero::after { right: -18vw; bottom: 2%; width: 86vw; }
   .section-head--split { flex-direction: column; align-items: flex-start; }
   .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .steps .media-frame { max-height: 420px; }
